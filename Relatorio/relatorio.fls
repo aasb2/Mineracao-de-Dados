@@ -671,6 +671,11 @@ INPUT ./relatorio.out
 INPUT ./relatorio.out
 OUTPUT relatorio.out
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
+INPUT ./Images/decision-tree.png
+INPUT ./Images/decision-tree.png
+INPUT Images/decision-tree.png
+INPUT ./Images/decision-tree.png
+INPUT ./Images/decision-tree.png
 INPUT ./relatorio.bbl
 INPUT relatorio.bbl
 INPUT ./relatorio.bbl

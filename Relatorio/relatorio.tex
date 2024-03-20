@@ -67,7 +67,7 @@ vbmp@cin.ufpe.br}
 \section{Database}
 
 A base de dados vieram da junção das bases de acidentes de trânsito\cite{incidents}
-ocorridos no Condado de Montgomery - Maryland, EUA e das informações dos motoristas envolvidos neste acidente\cite{drivers}..
+ocorridos no Condado de Montgomery - Maryland, EUA e das informações dos motoristas envolvidos neste acidente\cite{drivers}.
 Estas informações foram registradas pelo Sistema automatizado de Relatórios de acidentes da Policial estadual de Maryland.  
 
 \subsection{Scope and Data selection}
@@ -75,19 +75,35 @@ Como definido pela base de dados, o escopo é dado apenas pelos acidentes de tr�
 \subsection{Target definition}
 Com o objetivo de auxiliar o serviço médico, a atender emergências relacionadas a trânsito com maior eficiência,
 prevendo a gravidade de um acidente, este problema foi classificado de modo binário que teve como classes alvo 
-"alta gravidade" de atendimento, e "baixa gravidade". Inicialmente essa informação iria ser obtida através da 
+"Leve" que são acidentes não tão urgentes, e "Grave" que precisam de atendimento imediato. 
 
 \subsection{Pre-processing Data}
 % Originalmente planejava-se definir a gravidade do acidente, caso tenha ou não casualidades.
 % O processo foi definido inicia
-Após a junção dos datasets, foram obtidas 77 colunas de atributos, considerando as restrições de captação de dados do veículo, 
-foram incluidos apenas os atributos mais significativos e pertinentes para a análise, restando 36 features para serem analisadas.
+Após a junção dos datasets, foram obtidas 77 colunas de atributos, porém existia colunas com muitos valores nulos que foram 
+substituidas para "False" ou removidas e também muita  informação a posterióri que necessitavam ser removidas.
+Considerando as restrições de captação de dados do veículo, foram incluidos apenas os atributos mais significativos e pertinentes para a análise, 
+restando 36 features para serem analisadas.
+A coluna "ACRS Report Type" foi adaptada para definir as classes alvo, sendo os casos que houve dano a pessoa  considerados como 
+"Grave" sem diferenciar se houve mortes ou apenas ferimentos, e "Leve" os casos em que apenas houve dados a propriedade.
 
 \section{Extraction of knowledge, results and discussion}
-
+Para extrair o conhecimento inserido na base de dados, 
+foram utilizados três métodos: regressão logistica, arvore de decisão, e indução de regras
 \subsection{Logistic Regression}
 
+
+
 \subsection{Decision Trees}
+
+A árvore de decisão é um dos modos mais simples de visualisar o conhecimento presente em uma 
+base de dados, a partir dela, foi possível obter que três colunas foram as principais para definir qual
+era a gravidade do acidente: tipo de colisão, número de pistas e danos no veículo
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.4\textwidth]{Images/decision-tree.png}}
+\caption{\label{fig:decision-tree} Árvore de decisão gerada usando o Knime}
+\end{figure}
+
 
 \subsection{Classification rules induction}
 \subsection{Propensity score performance score}
