@@ -66,12 +66,22 @@ vbmp@cin.ufpe.br}
 
 \section{Database}
 
-A base de dados usada veio da junção das bases de dados de acidentes de carro do condado de Montgomery 
-\cite{incidents} e da base de informação dos motoristas involvidos nestes acidentes \cite{drivers}
+A base de dados vieram da junção das bases de acidentes de trânsito\cite{incidents}
+ocorridos no Condado de Montgomery - Maryland, EUA e das informações dos motoristas envolvidos neste acidente\cite{drivers}..
+Estas informações foram registradas pelo Sistema automatizado de Relatórios de acidentes da Policial estadual de Maryland.  
 
 \subsection{Scope and Data selection}
+Como definido pela base de dados, o escopo é dado apenas pelos acidentes de trânsito que ocorreram no Condado de Montgomery. 
 \subsection{Target definition}
+Com o objetivo de auxiliar o serviço médico, a atender emergências relacionadas a trânsito com maior eficiência,
+prevendo a gravidade de um acidente, este problema foi classificado de modo binário que teve como classes alvo 
+"alta gravidade" de atendimento, e "baixa gravidade". Inicialmente essa informação iria ser obtida através da 
+
 \subsection{Pre-processing Data}
+% Originalmente planejava-se definir a gravidade do acidente, caso tenha ou não casualidades.
+% O processo foi definido inicia
+Após a junção dos datasets, foram obtidas 77 colunas de atributos, considerando as restrições de captação de dados do veículo, 
+foram incluidos apenas os atributos mais significativos e pertinentes para a análise, restando 36 features para serem analisadas.
 
 \section{Extraction of knowledge, results and discussion}
 
