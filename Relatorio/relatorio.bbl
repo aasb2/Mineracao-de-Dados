@@ -21,6 +21,12 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{b1}
+\BIBentryALTinterwordspacing
+W.~H. Organization. (2024, Dec.) Road traffic injuries. [Online]. Available:
+  \url{https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries}
+\BIBentrySTDinterwordspacing
+
 \bibitem{incidents}
 \BIBentryALTinterwordspacing
 M.~Montgomery~County. (2024) Crash reporting - incidents data. [Online].

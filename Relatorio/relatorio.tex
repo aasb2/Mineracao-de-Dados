@@ -60,8 +60,11 @@ vbmp@cin.ufpe.br}
 
 
 \section{Introduction}
-
-
+Acidentes de trânsito são imprevisíveis, em torno de 1.19 milhões de pessoas morrem ao ano como resultado
+de batidas no trânsito\cite{b1}. Para tentar agilizar o processo de atendimento de pessoas envolvidas em acidentes, é
+analisado neste projeto as batidadas de carro ocorridas no Condado de Montgomery nos EUA, tendo como base informações obtidas logo
+após a batida, tem-se o objetivo de verificar se aquele caso precisa de atêndimento médico a prioritário. Casos com apenas danos a propriedades não são tão urgentes, quanto casos 
+onde há risco de vida a pessoa. 
 
 
 \section{Database}
@@ -83,7 +86,7 @@ prevendo a gravidade de um acidente, este problema foi classificado de modo bin�
 Após a junção dos datasets, foram obtidas 77 colunas de atributos, porém existia colunas com muitos valores nulos que foram 
 substituidas para "False" ou removidas e também muita  informação a posterióri que necessitavam ser removidas.
 Considerando as restrições de captação de dados do veículo, foram incluidos apenas os atributos mais significativos e pertinentes para a análise, 
-restando 36 features para serem analisadas.
+enquanto outras colunas foram agrupadas, para melhor organizar os dados restando menos das metades features para serem analisadas.
 A coluna "ACRS Report Type" foi adaptada para definir as classes alvo, sendo os casos que houve dano a pessoa  considerados como 
 "Grave" sem diferenciar se houve mortes ou apenas ferimentos, e "Leve" os casos em que apenas houve dados a propriedade.
 
@@ -91,17 +94,44 @@ A coluna "ACRS Report Type" foi adaptada para definir as classes alvo, sendo os 
 Para extrair o conhecimento inserido na base de dados, 
 foram utilizados três métodos: regressão logistica, arvore de decisão, e indução de regras
 \subsection{Logistic Regression}
+A regressão logistica permitiu obter as seguintes informações sobre o dataset:
 
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+        Feature~ & Beta~ & ~p-valor  \\ \hline
+        is\_moving~ &  1.257~ & ~0  \\ \hline
+        is\_particular~ &  1.218~ & ~0  \\ \hline
+        Second Harmful Event=OBJECT RELATED~ &  1.093~ & ~0  \\ \hline
+        First Harmful Event=OTHER~ &  -1.802~ & ~0  \\ \hline
+        Route Type=Service Road~ &  -1.288~ & ~0.002  \\ \hline
+        is\_accelerationg~ &  -1.23~ & ~0  \\ \hline
+        Route Type=Unknown~ &  -1.219~ & ~0.045  \\ \hline
+        Collision Type=Same Dir~ &  -1.193~ & ~0  \\ \hline
+    \end{tabular}
+\end{table}
 
+Como é possível verificar as features mais importantes para definir se o acidente resultará em danos a pessoa é 
+se o carro está movendo, se é particular e se o segundo evento depois da primeira batida é Relacionado a objeto.
+
+\begin{figure}[H]
+    \centerline{\includegraphics[width=0.4\textwidth]{Images/roc-curve-regressor.png}}
+    \caption{\label{fig:decision-tree} Curva ROC Para o Regressor Logistico}
+\end{figure}
 
 \subsection{Decision Trees}
 
 A árvore de decisão é um dos modos mais simples de visualisar o conhecimento presente em uma 
-base de dados, a partir dela, foi possível obter que três colunas foram as principais para definir qual
-era a gravidade do acidente: tipo de colisão, número de pistas e danos no veículo
+base de dados de modo compreenssivel. As variáveis mais importantes para definir a classe alvo foram...
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.4\textwidth]{Images/decision-tree.png}}
 \caption{\label{fig:decision-tree} Árvore de decisão gerada usando o Knime}
+\end{figure}
+
+\begin{figure}[H]
+    \centerline{\includegraphics[width=0.4\textwidth]{Images/roc-curve-decision-tree.png}}
+    \caption{\label{fig:decision-tree} Curva ROC Para a Árvore de Decisão}
 \end{figure}
 
 

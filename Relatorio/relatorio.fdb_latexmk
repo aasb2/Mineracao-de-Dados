@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex relatorio"] 1710919651 "relatorio.aux" "relatorio.bbl" "relatorio" 1710919888
+["bibtex relatorio"] 1711507587 "relatorio.aux" "relatorio.bbl" "relatorio" 1711507588
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "mybib.bib" 1710905472 1085 7fcff9d9732f971556a7d3dcba3291c7 ""
-  "relatorio.aux" 1710919888 2701 d0a8abd34472274c2a7e40f657ef7d41 "pdflatex"
+  "mybib.bib" 1711507190 1328 49f8771271ca0ab3b25fbbe65a29dd8b ""
+  "relatorio.aux" 1711507588 3261 02bd91848033f1e9dc45e858a88dc037 "pdflatex"
   (generated)
   "relatorio.bbl"
   "relatorio.blg"
-["pdflatex"] 1710919887 "/home/code/Repos/Mineracao-de-Dados/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1710919888
+["pdflatex"] 1711507587 "/home/code/Mineracao-de-Dados/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1711507588
   "/etc/texmf/web2c/texmf.cnf" 1710301774 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/code/Repos/Mineracao-de-Dados/Relatorio/relatorio.tex" 1710919887 8806 1e5cfe5dfd1dd59fadb1a743f291708f ""
+  "/home/code/Mineracao-de-Dados/Relatorio/relatorio.tex" 1711507210 10730 46281f37fd29986a2c91e3c2c4d32777 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -103,11 +103,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1710301815 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710474372 2802866 78fabbb51b6a7db3a15ae45cab2f0791 ""
-  "Images/decision-tree.png" 1710919473 4149882 ff90721fe3b9f7e966eed6ae951faba1 ""
-  "relatorio.aux" 1710919888 2701 d0a8abd34472274c2a7e40f657ef7d41 "pdflatex"
-  "relatorio.bbl" 1710919651 1459 d0169fcc58dc5a2c36db92424401a120 "bibtex relatorio"
-  "relatorio.out" 1710919888 1894 af1f6d4f6d89252c47f5fcd4f6c81c20 "pdflatex"
-  "relatorio.tex" 1710919887 8806 1e5cfe5dfd1dd59fadb1a743f291708f ""
+  "Images/decision-tree.png" 1711507210 170854 0a66d34568fda21e58c3e8ad39f2f249 ""
+  "Images/roc-curve-decision-tree.png" 1711507190 61009 01abcfab060acf2784f31923f36dd660 ""
+  "Images/roc-curve-regressor.png" 1711507190 61665 76ff07b7f5d50b9f9c7703e79a1b4dc2 ""
+  "relatorio.aux" 1711507588 3261 02bd91848033f1e9dc45e858a88dc037 "pdflatex"
+  "relatorio.bbl" 1711507587 1687 ec6a6d64efc6ae55f4f5caa25aeedcfd "bibtex relatorio"
+  "relatorio.out" 1711507588 1894 c49c781fb9689d667c61a9afa422d206 "pdflatex"
+  "relatorio.tex" 1711507210 10730 46281f37fd29986a2c91e3c2c4d32777 ""
   (generated)
   "relatorio.aux"
   "relatorio.log"
