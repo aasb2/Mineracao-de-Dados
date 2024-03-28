@@ -59,68 +59,67 @@ vbmp@cin.ufpe.br}
 
 
 
-\section{Introduction}
-Acidentes de trânsito são imprevisíveis, em torno de 1.19 milhões de pessoas morrem ao ano como resultado
-de batidas no trânsito\cite{b1}. Para tentar agilizar o processo de atendimento de pessoas envolvidas em acidentes, é
-analisado neste projeto as batidadas de carro ocorridas no Condado de Montgomery nos EUA, tendo como base informações obtidas logo
-após a batida, tem-se o objetivo de verificar se aquele caso precisa de atêndimento médico a prioritário. Casos com apenas danos a propriedades não são tão urgentes, quanto casos 
-onde há risco de vida a pessoa. 
+\section{Introdução}
+Acidentes de trânsito são inesperados e causam diversas perdas. Existem diversas variáveis que contribuem com a gravidade
+de um acidente.
 
 
-\section{Database}
+\section{Base de Dados}
 
 A base de dados vieram da junção das bases de acidentes de trânsito\cite{incidents}
 ocorridos no Condado de Montgomery - Maryland, EUA e das informações dos motoristas envolvidos neste acidente\cite{drivers}.
 Estas informações foram registradas pelo Sistema automatizado de Relatórios de acidentes da Policial estadual de Maryland.  
 
-\subsection{Scope and Data selection}
+\subsection{Escopo e Seleção dos Dados}
 Como definido pela base de dados, o escopo é dado apenas pelos acidentes de trânsito que ocorreram no Condado de Montgomery. 
-\subsection{Target definition}
-Com o objetivo de auxiliar o serviço médico, a atender emergências relacionadas a trânsito com maior eficiência,
-prevendo a gravidade de um acidente, este problema foi classificado de modo binário que teve como classes alvo 
-"Leve" que são acidentes não tão urgentes, e "Grave" que precisam de atendimento imediato. 
+\subsection{Definição do Objetivo}
 
-\subsection{Pre-processing Data}
+
+\subsection{Pré Processamento dos Dados}
 % Originalmente planejava-se definir a gravidade do acidente, caso tenha ou não casualidades.
 % O processo foi definido inicia
 Após a junção dos datasets, foram obtidas 77 colunas de atributos, porém existia colunas com muitos valores nulos que foram 
 substituidas para "False" ou removidas e também muita  informação a posterióri que necessitavam ser removidas.
 Considerando as restrições de captação de dados do veículo, foram incluidos apenas os atributos mais significativos e pertinentes para a análise, 
-enquanto outras colunas foram agrupadas, para melhor organizar os dados restando menos das metades features para serem analisadas.
-A coluna "ACRS Report Type" foi adaptada para definir as classes alvo, sendo os casos que houve dano a pessoa  considerados como 
-"Grave" sem diferenciar se houve mortes ou apenas ferimentos, e "Leve" os casos em que apenas houve dados a propriedade.
+enquanto outras colunas foram agrupadas, para melhor organizar os dados restando menos das metades features para serem analisadas. 
 
-\section{Extraction of knowledge, results and discussion}
+\subsection{Definição do Alvo}
+O alvo da classificação binária foi definido em relação ao dano do veículo, e o Objetivo é descobrir se houve ou não da
+no significativo ao veículo durante o acidente.
+\section{Extração de Dados, Resultados e Discussão}
 Para extrair o conhecimento inserido na base de dados, 
 foram utilizados três métodos: regressão logistica, arvore de decisão, e indução de regras
-\subsection{Logistic Regression}
-A regressão logistica permitiu obter as seguintes informações sobre o dataset:
+\subsection{Regressão Logistica}
+Após treinar o modelo de regressão logistica, foram analisadas as features com maior coeficiente beta, e que possuíssem maior 
+significância de acordo com o p-valor, onde os coeficientes de maior módulo tem mais relevância ao definir a classe alvo.
+As features com maior valor positivo tem maior contribuição para definir que houve
+dano significativo ao veículo, enquanto as de valores mais negativos possuem uma importância maior para definir se não houve dano significativo.
+
+Se o carro está se movendo ou é particular há uma maior chance de possuir dano significativo após o acidente, enqunto se tiver algum não motorista
+participando do acidente (pedestre ou ciclista), se o carro estiver acelerando ou se a colisão for na mesma direção, a probabilidade de 
+não haver dano significativo é bem menor.
 
 \begin{table}[!ht]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
     \hline
         Feature~ & Beta~ & ~p-valor  \\ \hline
-        is\_moving~ &  1.257~ & ~0  \\ \hline
-        is\_particular~ &  1.218~ & ~0  \\ \hline
-        Second Harmful Event=OBJECT RELATED~ &  1.093~ & ~0  \\ \hline
-        First Harmful Event=OTHER~ &  -1.802~ & ~0  \\ \hline
-        Route Type=Service Road~ &  -1.288~ & ~0.002  \\ \hline
-        is\_accelerationg~ &  -1.23~ & ~0  \\ \hline
-        Route Type=Unknown~ &  -1.219~ & ~0.045  \\ \hline
-        Collision Type=Same Dir~ &  -1.193~ & ~0  \\ \hline
+        is\_moving~ &  1.259~ & ~0  \\ \hline
+        is\_particular~ & 1.255~ & ~0  \\ \hline
+        RelatedNon-Motorist ~ & -2.652~ & ~0  \\ \hline
+        is\_accelerating ~ & -1.212 ~ & ~0  \\ \hline
+        CollisionType=SameDir ~ & -1.175 ~ & ~0  \\ \hline
     \end{tabular}
 \end{table}
 
-Como é possível verificar as features mais importantes para definir se o acidente resultará em danos a pessoa é 
-se o carro está movendo, se é particular e se o segundo evento depois da primeira batida é Relacionado a objeto.
+
 
 \begin{figure}[H]
     \centerline{\includegraphics[width=0.4\textwidth]{Images/roc-curve-regressor.png}}
     \caption{\label{fig:decision-tree} Curva ROC Para o Regressor Logistico}
 \end{figure}
 
-\subsection{Decision Trees}
+\subsection{Árvore de Decisão}
 
 A árvore de decisão é um dos modos mais simples de visualisar o conhecimento presente em uma 
 base de dados de modo compreenssivel. As variáveis mais importantes para definir a classe alvo foram...
@@ -135,11 +134,19 @@ base de dados de modo compreenssivel. As variáveis mais importantes para defini
 \end{figure}
 
 
-\subsection{Classification rules induction}
-\subsection{Propensity score performance score}
+\subsection{Indução de Regras de Classificação}
+% \subsection{Propensity score performance score}
 
-
-\section{Conclusions}
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+        Feature~ & Cobertura~ & ~Confiança & ~ Lift \\ \hline
+        is\_moving~ &  1.259~ & ~0 & ~  \\ \hline
+    \end{tabular}
+    \caption{label{tab:tab2} HEre}
+\end{table}
+\section{Conclusão}
 
 
 
