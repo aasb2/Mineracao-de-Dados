@@ -11,11 +11,13 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{float}
 \usepackage{subcaption}
+\usepackage{rotating}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Redes Neurais Convolucionais}
+\title{Previsão de Emergêncis}
 
 \author{\IEEEauthorblockN{Arthur Abrahão Santos Barbosa}
 \IEEEauthorblockA{\textit{Universidade Federal de Pernambuco} \\
@@ -23,7 +25,7 @@
 Pernambuco, Brasil \\
 aasb2@cin.ufpe.br}
 \and
-\IEEEauthorblockN{Arthur Henrique}
+\IEEEauthorblockN{Arthur Henrique Anibal da Costa}
 \IEEEauthorblockA{\textit{Universidade Federal de Pernambuco} \\
 \textit{Centro de Informática}\\
 Pernambuco, Brasil \\
@@ -106,6 +108,7 @@ O alvo da classificação binária ficou então definido em relação ao dano do
 \section{Extração de Dados, Resultados e Discussão}
 Para extrair o conhecimento inserido na base de dados, 
 foram utilizados três métodos: regressão logistica, arvore de decisão, e indução de regras
+
 \subsection{Regressão Logistica}
 Após treinar o modelo de regressão logistica, foram analisadas as features com maior coeficiente beta, e que possuíssem maior 
 significância de acordo com o p-valor, onde os coeficientes de maior módulo tem mais relevância ao definir a classe alvo.
@@ -127,9 +130,113 @@ não haver dano significativo é bem menor.
         is\_particular~ & 1.255~ & ~0  \\ \hline
         RelatedNon-Motorist ~ & -2.652~ & ~0  \\ \hline
         is\_accelerating ~ & -1.212 ~ & ~0  \\ \hline
-        CollisionType=SameDir ~ & -1.175 ~ & ~0  \\ \hline
+        CT=SameDir ~ & -1.175 ~ & ~0  \\ \hline
     \end{tabular}
 \end{table}
+
+
+
+
+
+\subsection{Árvore de Decisão}
+
+A árvore de decisão é um dos modos mais simples de visualisar o conhecimento presente em uma 
+base de dados de modo compreenssível. As variáveis mais importantes para definir a classe alvo foi principalmente o tipo de colisão,
+sendo a colisão em ângulo a com maior probabilidade de causar dano ao veículo Outra características importante foi a divisão da estrada.
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.4\textwidth]{Images/decision-tree.png}}
+\caption{\label{fig:decision-tree} Árvore de decisão gerada usando o Knime}
+\end{figure}
+
+\subsection{Indução de Regras de Classificação}
+A indução de regras vai trazer para nós um conjunto de regras em fórmula de E’s e OU’s, sendo utilizadas para classificar em uma determinada classe.
+	Com o resultado da execução dos algoritmos indutores de regras. O primeiro o RIPPER (Repeated Incremental Pruning to Produce Error Reduction) que usa um processo iterativo de criação e refinamento de regras, com objetivo em melhor a precisão, sendo uma extensão do IREP, o segundo, o CN2(Classificação Numérica 2) também foi utilizado, sendo formulado em sua origem como uma extensão do primeiro.
+	Após a execução iterativa dos algoritmos indutores de regra, obtivemos uma extensa lista de regras, algumas com muitas e outras com menos cláusulas. Também limitamos o número de cláusulas máximas que poderiam ser geradas.
+
+% \subsection{Propensity score performance score}
+
+
+
+\begin{table}[!ht]
+    \centering
+    \caption{Tabela de regras RIPPER Ruler Induction}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        Regra: & Clausula 1 & 2 & 3 & 4 & 5 \\ \hline
+        1 & is\_particular=1 & is\_moving=1 & is\_slowing=0 & is\_accelerating=0 & ~ \\ \hline
+        2 & is\_particular=1 & is\_moving=1 & CollisionType=Angle & Is\_Junction=1 & ~ \\ \hline
+        3 & is\_particular=1 & is\_moving=1 & CollisionType=Outros & RoadCondition=0.0 & ~ \\ \hline
+        4 & CollisionType=Angle & is\_particular=1 & RD=TWO-WAY, DIVIDED & ~ & ~ \\ \hline
+        5 & is\_particular=1 & CollisionType=Outros & RoadCondition=0.0 & ~ & ~ \\ \hline
+        6 & is\_moving=1 & is\_particular=1 & is\_slowing=0 & is\_accelerating=0 & SHE=VEHICLE RELATED \\ \hline
+        7 & Hit\_Fixed\_Object=1 & is\_particular=1 & ~ & ~ & ~ \\ \hline
+        8 & CollisionType=Angle & TrafficControl=2 & is\_particular=1 & ~ & ~ \\ \hline
+        9 & is\_moving=1 & is\_particular=1 & RoadCondition=0.0 & CollisionType=Outros & RelatedNon-Motorist=0 \\ \hline
+        10 & CollisionType=Angle & Is\_Junction=1 & is\_particular=1 & RelatedNon-Motorist=0 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        Regra: & Cobertura & Confiança & Lift \\ \hline
+        1 & 0,409 & 0,591 & 1,420 \\ \hline
+        2 & 0,141 & 0,675 & 1,620 \\ \hline
+        3 & 0,175 & 0,659 & 1,582 \\ \hline
+        4 & 0,107 & 0,682 & 1,638 \\ \hline
+        5 & 0,190 & 0,638 & 1,532 \\ \hline
+        6 & 0,078 & 0,620 & 1,489 \\ \hline
+        7 & 0,128 & 0,744 & 1,786 \\ \hline
+        8 & 0,124 & 0,674 & 1,619 \\ \hline
+        9 & 0,169 & 0,708 & 1,700 \\ \hline
+        10 & 0,144 & 0,675 & 1,621 \\ \hline
+    \end{tabular}
+\end{table}
+
+
+
+Tabela: CN2 Rule Induction
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        Regra & Clausula 1 & 2 & 3 \\ \hline
+        1 & CollisionType==Angle & TrafficControl>=2.0 & is\_slowing==0 \\ \hline
+        2 & CollisionType==Outros & Is\_Junction!=0 & SurfaceConditionGroup!=Wet \\ \hline
+        3 & Hit\_Fixed\_Object!=0 & SecondHarmfulEvent!=OBJECT RELATED & is\_slowing==0 \\ \hline
+        4 & CollisionType==Angle & RoadDivision==TWO-WAY, DIVIDED & TrafficControl>=2.0 \\ \hline
+        5 & CollisionType==Angle & TrafficControl>=2.0 & NumberofLanes>=3.0 \\ \hline
+        6 & CollisionType==Angle & WeatherGroup==Clear & Light==LIGHT \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        Regra & Cobertura & Confiança & Lift \\ \hline
+        1 & 0,106 & 0,659 & 1,582 \\ \hline
+        2 & 0,103 & 0,578 & 1,388 \\ \hline
+        3 & 0,075 & 0,656 & 1,575 \\ \hline
+        4 & 0,092 & 0,679 & 1,630 \\ \hline
+        5 & 0,066 & 0,683 & 1,640 \\ \hline
+        6 & 0,096 & 0,588 & 1,413 \\ \hline
+    \end{tabular}
+\end{table}
+
+
+
+\section{Avaliação de Performance}
+Para avaliar a performance do regressor logistico, foi utilizada a métrica AUC\_ROC que tem como
+valor ideal 1, o valor obtido foi 0.788, mostrando que o regressor consegue distinguir bem entre
+os valores possíveis da decisão binária.
+
+\section{Conclusão}
+Neste trabalho foi analisado quão significante foi o dano ao veìculo após o acidente,
+técnicas como árvore de decisão e regressão logistica permitiram entender melhor a 
+relação das características da base de dados com a variáveis alvos, enquanto a indução
+de regras permitiu que relações que envolvem mais de uma característica fossem encontradas.
 
 
 
@@ -137,38 +244,6 @@ não haver dano significativo é bem menor.
     \centerline{\includegraphics[width=0.4\textwidth]{Images/roc-curve-regressor.png}}
     \caption{\label{fig:decision-tree} Curva ROC Para o Regressor Logistico}
 \end{figure}
-
-\subsection{Árvore de Decisão}
-
-A árvore de decisão é um dos modos mais simples de visualisar o conhecimento presente em uma 
-base de dados de modo compreenssível. As variáveis mais importantes para definir a classe alvo foi principalmente o tipo de colisão,
-sendo a colisão em ângulo a com maior probabilidade de causar dano ao veículol Outras características importante foi a divisão da estrada.
-\begin{figure}[H]
-\centerline{\includegraphics[width=0.4\textwidth]{Images/decision-tree.png}}
-\caption{\label{fig:decision-tree} Árvore de decisão gerada usando o Knime}
-\end{figure}
-
-\begin{figure}[H]
-    \centerline{\includegraphics[width=0.4\textwidth]{Images/roc-curve-decision-tree.png}}
-    \caption{\label{fig:decision-tree} Curva ROC Para a Árvore de Decisão}
-\end{figure}
-
-
-\subsection{Indução de Regras de Classificação}
-% \subsection{Propensity score performance score}
-
-\begin{table}[!ht]
-    \centering
-    \caption{Indução de Regras Com o Algoritimo RIPPER}
-    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
-    \hline
-        Feature~ & Cobertura~ & ~Confiança & ~ Lift \\ \hline
-    \end{tabular}
-    \caption{label{tab:tab2} HEre}
-\end{table}
-\section{Conclusão}
-
-
 
 \bibliography{mybib}
 \nocite{*}

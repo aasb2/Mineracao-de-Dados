@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex relatorio"] 1711675731 "relatorio.aux" "relatorio.bbl" "relatorio" 1711675897
+["bibtex relatorio"] 1711679698 "relatorio.aux" "relatorio.bbl" "relatorio" 1711679700
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
   "mybib.bib" 1711675233 1799 b90cb505b2c453d3a79925597a03dca9 ""
-  "relatorio.aux" 1711675897 3867 b12b1146c40141328a11412d9b670afa "pdflatex"
+  "relatorio.aux" 1711679699 3575 be793a7d8a8deb6c59283eb0fc85c0d4 "pdflatex"
   (generated)
   "relatorio.bbl"
   "relatorio.blg"
-["pdflatex"] 1711675897 "/home/code/Mineracao-de-Dados/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1711675897
+["pdflatex"] 1711679698 "/home/code/Mineracao-de-Dados/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1711679700
   "/etc/texmf/web2c/texmf.cnf" 1710301774 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/code/Mineracao-de-Dados/Relatorio/relatorio.tex" 1711675896 9351 e9dea47363972b14f0b06d3d7a831922 ""
+  "/home/code/Mineracao-de-Dados/Relatorio/relatorio.tex" 1711679696 13285 ba0475f291e93ec9421bfd879771114d ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -80,6 +80,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty" 1622581934 18399 7e40f80366dffb22c0e7b70517db5cb4 ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty" 1636758526 7996 a8fb260d598dcaf305a7ae7b9c3e3229 ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty" 1622581934 2671 4de6781a30211fe0ea4c672e4a2a8166 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty" 1622581934 7060 456d34a7dddb810e7885ac5d0fc74391 ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty" 1636758526 4009 187ea2dc3194cd5a76cd99a8d7a6c4d0 ""
   "/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty" 1580250785 17914 4c28a13fc3d975e6e81c9bea1d697276 ""
   "/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def" 1623096352 49890 0bb76a5b745d92e86aed6f3f93e334f0 ""
@@ -104,12 +105,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1710301815 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710474372 2802866 78fabbb51b6a7db3a15ae45cab2f0791 ""
   "Images/decision-tree.png" 1711675814 87998 f5c29f2cb51b883461b62a75e4028fbc ""
-  "Images/roc-curve-decision-tree.png" 1711672435 59535 1eb5f9b107abe50bd23e8382673c2d75 ""
   "Images/roc-curve-regressor.png" 1711672435 61414 0ba95bdf5c0174432667f4a2c77b7b0f ""
-  "relatorio.aux" 1711675897 3867 b12b1146c40141328a11412d9b670afa "pdflatex"
-  "relatorio.bbl" 1711675731 2169 02d4f3a37c7d43d11b3c109402f0928a "bibtex relatorio"
-  "relatorio.out" 1711675897 1973 d1daaa5c93611e54db3cb2ff371a95b7 "pdflatex"
-  "relatorio.tex" 1711675896 9351 e9dea47363972b14f0b06d3d7a831922 ""
+  "relatorio.aux" 1711679699 3575 be793a7d8a8deb6c59283eb0fc85c0d4 "pdflatex"
+  "relatorio.bbl" 1711679698 2169 02d4f3a37c7d43d11b3c109402f0928a "bibtex relatorio"
+  "relatorio.out" 1711679699 2149 05cc557e515a6396ad76a084b295f1d3 "pdflatex"
+  "relatorio.tex" 1711679696 13285 ba0475f291e93ec9421bfd879771114d ""
   (generated)
   "relatorio.aux"
   "relatorio.log"

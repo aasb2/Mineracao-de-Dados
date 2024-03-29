@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  28 MAR 2024 22:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  28 MAR 2024 23:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -360,60 +360,64 @@ Package caption Info: hyperref package is loaded.
 )
 \c@subfigure=\count295
 \c@subtable=\count296
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count297
+\rotFPtop=\skip56
+\rotFPbot=\skip57
+\rot@float@box=\box56
+\rot@mess@toks=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count297
-\l__pdf_internal_box=\box56
+\l__color_backend_stack_int=\count298
+\l__pdf_internal_box=\box57
 ) (./relatorio.aux
-
-LaTeX Warning: Label `fig:decision-tree' multiply defined.
-
 
 LaTeX Warning: Label `fig:decision-tree' multiply defined.
 
 )
 \openout1 = `relatorio.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count298
+\scratchcounter=\count299
 \scratchdimen=\dimen184
-\scratchbox=\box57
-\nofMPsegments=\count299
-\nofMParguments=\count300
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count301
+\scratchbox=\box58
+\nofMPsegments=\count300
+\nofMParguments=\count301
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count302
 \MPscratchDim=\dimen185
-\MPnumerator=\count302
-\makeMPintoPDFobject=\count303
-\everyMPtoPDFconversion=\toks26
+\MPnumerator=\count303
+\makeMPintoPDFobject=\count304
+\everyMPtoPDFconversion=\toks27
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 18.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -421,16 +425,17 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count304
+\c@section@level=\count305
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 18.
+LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \nameref on input line 18.
  (./relatorio.out) (./relatorio.out)
 \@outlinefile=\write3
 \openout3 = `relatorio.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 Underfull \vbox (badness 2245) has occurred while \output is active []
@@ -439,40 +444,40 @@ Underfull \vbox (badness 2245) has occurred while \output is active []
 
 
 ]
-Underfull \hbox (badness 1888) in paragraph at lines 110--112
+Underfull \hbox (badness 1888) in paragraph at lines 113--115
 []\OT1/ptm/m/n/10 Ap[]os treinar o mod-elo de regress[]ao lo-gis-tica, foram
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 123.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 126.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 123.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 126.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Images/roc-curve-regressor.png, id=68, 671.50874pt x 731.73375pt>
-File: Images/roc-curve-regressor.png Graphic file (type png)
-<use Images/roc-curve-regressor.png>
-Package pdftex.def Info: Images/roc-curve-regressor.png  used on input line 137.
-(pdftex.def)             Requested size: 206.39685pt x 224.9035pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<Images/decision-tree.png, id=70, 1513.655pt x 542.025pt>
+<Images/decision-tree.png, id=72, 1513.655pt x 542.025pt>
 File: Images/decision-tree.png Graphic file (type png)
 <use Images/decision-tree.png>
 Package pdftex.def Info: Images/decision-tree.png  used on input line 147.
 (pdftex.def)             Requested size: 206.39685pt x 73.9063pt.
-<Images/roc-curve-decision-tree.png, id=71, 671.50874pt x 731.73375pt>
-File: Images/roc-curve-decision-tree.png Graphic file (type png)
-<use Images/roc-curve-decision-tree.png>
-Package pdftex.def Info: Images/roc-curve-decision-tree.png  used on input line 152.
+
+Overfull \hbox (241.80469pt too wide) in paragraph at lines 163--177
+ [][] 
+ []
+
+
+Overfull \hbox (131.65334pt too wide) in paragraph at lines 202--212
+ [][] 
+ []
+
+[2 <./Images/decision-tree.png>]
+<Images/roc-curve-regressor.png, id=84, 671.50874pt x 731.73375pt>
+File: Images/roc-curve-regressor.png Graphic file (type png)
+<use Images/roc-curve-regressor.png>
+Package pdftex.def Info: Images/roc-curve-regressor.png  used on input line 244.
 (pdftex.def)             Requested size: 206.39685pt x 224.9035pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2 <./Images/roc-curve-regressor.png> <./Images/decision-tree.png>] (./relatorio.bbl)
+ (./relatorio.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -486,26 +491,26 @@ Before submitting the final camera ready copy, remember to:
 
 [3
 
- <./Images/roc-curve-decision-tree.png>] (./relatorio.aux)
+ <./Images/roc-curve-regressor.png>] (./relatorio.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: D1DAAA5C93611E54DB3CB2FF371A95B7;1973.
+(rerunfilecheck)             Checksum: 05CC557E515A6396AD76A084B295F1D3;2149.
  ) 
 Here is how much of TeX's memory you used:
- 12385 strings out of 478287
- 199991 string characters out of 5849289
- 517263 words of memory out of 5000000
- 30395 multiletter control sequences out of 15000+600000
+ 12461 strings out of 478287
+ 201164 string characters out of 5849289
+ 529457 words of memory out of 5000000
+ 30466 multiletter control sequences out of 15000+600000
  500675 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,12n,77p,782b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,12n,77p,782b,370s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on relatorio.pdf (3 pages, 175273 bytes).
+Output written on relatorio.pdf (3 pages, 149751 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 112 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 122 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 115 words of extra memory for PDF output out of 10000 (max. 10000000)
 
