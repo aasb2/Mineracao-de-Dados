@@ -60,38 +60,56 @@ vbmp@cin.ufpe.br}
 
 
 \section{Introdução}
-Acidentes de trânsito são inesperados e causam diversas perdas. Existem diversas variáveis que contribuem com a gravidade
-de um acidente.
+Acidentes de trânsito são inesperados e causam diversas perdas. Existem diversas variáveis que contribuem com a gravidade de um acidente. 
+O intuito deste estudo é desenvolver um modelo que ajude na predição do chamado em casos de acidentes em vias terrestres.
+
+O trabalho envolve também, a partir de uma base de dados, determinar um sistema de apoio à decisão, que a partir dos dados coletados,
+possui capacidade de apontar caminhos a serem seguidos. E, com base na experiência do domínio do problema, o stakeholder pode definir as decisões a serem tomadas.
+
+Além disso, houve um avanço do conhecimento a partir da noção de IA explicável. E, com esse objetivo, usamos três métodos para, 
+além de desenvolver um bom sistema, entender com propriedade o que está lá dentro, que determina o por quê e quais caminhos os algoritmos estão tomando
 
 
 \section{Base de Dados}
 
 A base de dados vieram da junção das bases de acidentes de trânsito\cite{incidents}
 ocorridos no Condado de Montgomery - Maryland, EUA e das informações dos motoristas envolvidos neste acidente\cite{drivers}.
-Estas informações foram registradas pelo Sistema automatizado de Relatórios de acidentes da Policial estadual de Maryland.  
+
+Estas informações foram registradas pelo “Sistema automatizado de Relatórios de Acidentes da Polícia estadual de Maryland”. 
+
 
 \subsection{Escopo e Seleção dos Dados}
 Como definido pela base de dados, o escopo é dado apenas pelos acidentes de trânsito que ocorreram no Condado de Montgomery. 
-\subsection{Definição do Objetivo}
+Nele, temos informações sobre estado da via, trânsito, clima e detalhes sobre o impacto (caso tenha ocorrido). 
+Entretanto, grande parte desses dados são informações a posteriori, se fazendo necessário então a remoção dessas colunas.
 
+\subsection{Definição do Objetivo}
+Com o conhecimento gerado a partir dos modelos treinados é possível aplicar a predição em diversos segmentos do mercado, 
+como por exemplo: Seguradoras, empresas de locação de veículos, planos de saúde e outros prestadores de serviços relacionados a carro ou a saúde do condutor.
 
 \subsection{Pré Processamento dos Dados}
-% Originalmente planejava-se definir a gravidade do acidente, caso tenha ou não casualidades.
-% O processo foi definido inicia
-Após a junção dos datasets, foram obtidas 77 colunas de atributos, porém existia colunas com muitos valores nulos que foram 
-substituidas para "False" ou removidas e também muita  informação a posterióri que necessitavam ser removidas.
-Considerando as restrições de captação de dados do veículo, foram incluidos apenas os atributos mais significativos e pertinentes para a análise, 
-enquanto outras colunas foram agrupadas, para melhor organizar os dados restando menos das metades features para serem analisadas. 
+Inicialmente a ideia girava em torno de tentar predizer a gravidade do acidente, qual a chance de existirem vítimas graves (sendo esse o alvo binário). 
+Neste sentido, foram encontradas algumas dificuldades. 
+
+Com a junção dos datasets, foram obtidas 77 colunas de atributos. Dentre essas colunas, 51 eram de valores que precisariam ser removidos (dados a posteriori) ou tratados, como por exemplo colunas com muitos valores nulos. Considerando também as restrições de captação de dados do veículo, foram incluídos apenas os atributos mais significativos e pertinentes para a análise, enquanto outras colunas foram agrupadas, para melhor organizar os dados, restando 26 features para serem analisadas.
+
+A principal técnica utilizada para tratamento foi a criação de variáveis “dummies”\cite{dummy}. Variáveis categóricas ou variáveis binárias foram alteradas para variáveis “flags”. Um bom exemplo de uso dessa técnica é a coluna de local de impacto: variável categórica que indicava a posição do impacto no veículo. Possuía valores baseados na técnica militar que usa o relógio para indicar posição, ou seja, 9 horas, 1 horas, 6 horas. Agrupando esta variável, chegamos aos valores “colisão frontal”, “colisão lateral”, “colisão traseira” ou “outro”. Assim, reduzimos de 15 (cima, baixo e desconhecido também eram valores) possíveis valores para apenas 4.
+
+Por recomendações do professor, evitamos deixar variáveis com valores ordenados, pois para o modelo pode passar a ideia de “prioridade” ou de “ordem”, tornando a coluna enviesada. Sendo assim, usamos a técnica de variáveis “dummies”\cite{dummy} e experimentamos usar a técnica “Frequency Encoding”\cite{encoding} , onde codificamos uma variável categórica de forma que seu valor passe a ser representado pela frequência de vezes em que o seu valor aparece no conjunto de dados.
+
 
 \subsection{Definição do Alvo}
-O alvo da classificação binária foi definido em relação ao dano do veículo, e o Objetivo é descobrir se houve ou não da
-no significativo ao veículo durante o acidente.
+No primeiro momento, o alvo binário tratava-se de predizer se havia chance de ter vítimas graves ou não em um acidente. Entretanto, devido a dificuldade em obter bons resultados com o dataset, foi estudada a possibilidade de trocar para a coluna de dano ao veículo e o impacto que isso teria na ideia principal do projeto.
+
+O alvo da classificação binária ficou então definido em relação ao dano do veículo, sendo então o objetivo descobrir se houve ou não dano significativo ao mesmo.
+
 \section{Extração de Dados, Resultados e Discussão}
 Para extrair o conhecimento inserido na base de dados, 
 foram utilizados três métodos: regressão logistica, arvore de decisão, e indução de regras
 \subsection{Regressão Logistica}
 Após treinar o modelo de regressão logistica, foram analisadas as features com maior coeficiente beta, e que possuíssem maior 
 significância de acordo com o p-valor, onde os coeficientes de maior módulo tem mais relevância ao definir a classe alvo.
+
 As features com maior valor positivo tem maior contribuição para definir que houve
 dano significativo ao veículo, enquanto as de valores mais negativos possuem uma importância maior para definir se não houve dano significativo.
 
@@ -101,6 +119,7 @@ não haver dano significativo é bem menor.
 
 \begin{table}[!ht]
     \centering
+    \caption{características mais Relevantes de Acordo com A Regressão Logistica}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
     \hline
         Feature~ & Beta~ & ~p-valor  \\ \hline
@@ -122,7 +141,8 @@ não haver dano significativo é bem menor.
 \subsection{Árvore de Decisão}
 
 A árvore de decisão é um dos modos mais simples de visualisar o conhecimento presente em uma 
-base de dados de modo compreenssivel. As variáveis mais importantes para definir a classe alvo foram...
+base de dados de modo compreenssível. As variáveis mais importantes para definir a classe alvo foi principalmente o tipo de colisão,
+sendo a colisão em ângulo a com maior probabilidade de causar dano ao veículol Outras características importante foi a divisão da estrada.
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.4\textwidth]{Images/decision-tree.png}}
 \caption{\label{fig:decision-tree} Árvore de decisão gerada usando o Knime}
@@ -139,95 +159,14 @@ base de dados de modo compreenssivel. As variáveis mais importantes para defini
 
 \begin{table}[!ht]
     \centering
+    \caption{Indução de Regras Com o Algoritimo RIPPER}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
     \hline
         Feature~ & Cobertura~ & ~Confiança & ~ Lift \\ \hline
-        is\_moving~ &  1.259~ & ~0 & ~  \\ \hline
     \end{tabular}
     \caption{label{tab:tab2} HEre}
 \end{table}
 \section{Conclusão}
-
-
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean1.png}}
-% \caption{\label{fig:img_mean1}Da esquerda para a direita, de cima para a baixo: apple, aquarium\_fish, baby, bear, beaver, bed, bee, beetle, bicycle, bottle, bowl, boy, bridge, bus, butterfly, camel, can, castle, caterpillar, cattle, chair, chimpanzee, clock, cloud, cockroach}
-% \end{figure}
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean2.png}}
-% \caption{\label{fig:img_mean2}Da esquerda para a direita, de cima para a baixo: couch, crab, crocodile, cup, dinosaur, dolphin, elephant, flatfish, forest, fox, girl, hamster, house, kangaroo, keyboard, lamp, lawn\_mower, leopard, lion, lizard, lobster, man, maple\_tree, motorcycle, mountain}
-% \end{figure}
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean3.png}}
-% \caption{\label{fig:img_mean3}Da esquerda para a direita, de cima para a baixo: mouse, mushroom, oak\_tree, orange, orchid, otter, palm\_tree, pear, pickup\_truck, pine\_tree, plain, plate, poppy, porcupine, possum, rabbit, raccoon, ray, road, rocket, rose, sea, seal, shark, shrew}
-% \end{figure}
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean4.png}}
-% \caption{\label{fig:img_mean4}Da esquerda para a direita, de cima para a baixo: skunk, skyscraper, snail, snake, spider, squirrel, streetcar, sunflower, sweet\_pepper, table, tank, telephone, television, tiger, tractor, train, trout, tulip, turtle, wardrobe, whale, willow\_tree, wolf, woman, worm}
-% \end{figure}
-
-% \begin{itemize}
-% \item Média da Imagens Normalizadas
-% \end{itemize}
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean_norm1.png}}
-% \caption{\label{fig:img_mean_norm1}Da esquerda para a direita, de cima para a baixo: apple, aquarium\_fish, baby, bear, beaver, bed, bee, beetle, bicycle, bottle, bowl, boy, bridge, bus, butterfly, camel, can, castle, caterpillar, cattle, chair, chimpanzee, clock, cloud, cockroach}
-% \end{figure}
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean_norm2.png}}
-% \caption{\label{fig:img_mean_norm2}Da esquerda para a direita, de cima para a baixo: couch, crab, crocodile, cup, dinosaur, dolphin, elephant, flatfish, forest, fox, girl, hamster, house, kangaroo, keyboard, lamp, lawn\_mower, leopard, lion, lizard, lobster, man, maple\_tree, motorcycle, mountain}
-% \end{figure}
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean_norm3.png}}
-% \caption{\label{fig:img_mean_norm3}Da esquerda para a direita, de cima para a baixo: mouse, mushroom, oak\_tree, orange, orchid, otter, palm\_tree, pear, pickup\_truck, pine\_tree, plain, plate, poppy, porcupine, possum, rabbit, raccoon, ray, road, rocket, rose, sea, seal, shark, shrew}
-% \end{figure}
-
-% \begin{figure}[H]
-% \centerline{\includegraphics[width=0.4\textwidth]{Images/img_mean_norm4.png}}
-% \caption{\label{fig:img_mean_norm4}Da esquerda para a direita, de cima para a baixo: skunk, skyscraper, snail, snake, spider, squirrel, streetcar, sunflower, sweet\_pepper, table, tank, telephone, television, tiger, tractor, train, trout, tulip, turtle, wardrobe, whale, willow\_tree, wolf, woman, worm}
-% \end{figure}
-    
-%\subsection{Sobre o Projeto}
-%Para montar o classificador foi necessário passar  pelas seguintes etapas:
-
-
-
-% \section{Sobre as Métricas Utilizadas}
-
-% \subsection{Precision}
-
-% Precision é a razão
-%     \begin{equation}
-%         \frac{A_c}{A_c + A_e}
-%     \end{equation}
-
-%     onde:
-
-%     \begin{itemize}
-%     \item $A_c$ é o número de amostras corretamente classificadas de uma determinada classe.
-%     \item $A_e$ é o número de amostras  erroneamente classificadas como sendo desta determinada classe.
-%     \end{itemize}
-
-%     Precision é intuitivamente a habilidade do classificador não marcar como pertencente a uma classe uma amostra que não pertence a esta. O melhor valor de Precision é 1 e o pior é zero.
-%     \cite{b7}
-% \subsection{Accuracy} 
-
-% Accuracy é a fração de amostras preditas corretamente, e é dada pela seguinte fórmula:
-
-% \begin{equation}
-%     \frac{\sum\limits_{1}^{n}A_c}{\sum\limits_{1}^{n}A_t}
-% \end{equation}
-
-
-
-
 
 
 
